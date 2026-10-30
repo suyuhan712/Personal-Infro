@@ -1,0 +1,6 @@
+---
+import profile from '../data/profile.json';
+import '../styles/global.css';
+const {title=profile.name}=Astro.props;
+---
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><meta name="description" content={profile.bio}/><title>{title} · 生活手记</title><link rel="alternate" type="application/rss+xml" title={profile.name} href="/rss.xml"/></head><body><div class="shell"><header><a class="brand" href="/"><span class="sun">✳</span>{profile.name}<small>SLOW DAYS JOURNAL</small></a><nav aria-label="主导航"><a href="/" aria-current={Astro.url.pathname==='/'?'page':undefined}>首页</a><a href="/journal/" aria-current={Astro.url.pathname.startsWith('/journal')?'page':undefined}>日常</a><a href="/about/" aria-current={Astro.url.pathname==='/about/'?'page':undefined}>关于</a><a class="rss-nav" href="/subscribe/">RSS ↗</a></nav></header><main><slot/></main><footer><span>© {new Date().getFullYear()} {profile.name} <i> · </i> 认真生活，慢慢记录。</span><a href="/subscribe/">保持联系，订阅 RSS ↗</a></footer></div></body></html>
